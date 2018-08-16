@@ -1,36 +1,40 @@
 <div class="container">
-  <div class="row">
-    <div class="right">
-      <h3>What do you want to do?</h3>
-    </div>
-    <div class="left">
-      <select id="mood" class="dropdown">
+
+  <div class="left">
+    <h3>What do you want to do?</h3>
+  </div>
+
+  <div class="right">
+    <form>
+      <select id="option" class="dropdown">
         <option value="stream">Stream</option>
         <option value="eat">Eat</option>
         <option value="music">Listen</option>
         <option value="nothing">Nothing</option>
       </select>
-    </div>
+    </form>
   </div>
-  <div class="row">
-    <div class="right">
-      <h3>How are you feeling?</h3>
-    </div>
-    <div class="left">
-      <select id="option" class="dropdown">
-        <option value="happy">Dreamy</option>
-        <option value="afraid">Happy</option>
+
+  <div class="left">
+    <h3>How are you feeling?</h3>
+  </div>
+
+  <div class="right">
+    <form>
+      <select id="mood" class="dropdown">
+        <option value="dreamy">Dreamy</option>
+        <option value="happy">Happy</option>
         <option value="angry">Angry</option>
         <option value="disgusted">Sad</option>
         <option value="stressed">Stressed</option>
         <option value="weird">Weird</option>
         <option value="bored">Bored</option>
       </select>
-    </div>
+    </form>
   </div>
-  <div class="row">
-     <button type="submit" class="submit" id="optionSubmit">
-    Submit</button>
 
+  <div class="full">
+    <button type="submit" class="submit" id="optionSubmit">
+      Submit
+    </button>
   </div>
-</div>

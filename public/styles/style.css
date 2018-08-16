@@ -1,4 +1,198 @@
+* {
+  font-family: "Open Sans", sans-serif;
+  box-sizing: border-box; }
+
+body, html {
+  padding: 0;
+  margin: 0;
+  height: 100%; }
+
+body {
+  overflow-x: hidden; }
+
+body {
+  background: -webkit-gradient(linear, left bottom, right bottom, color-stop(50%, #e9e9e9), color-stop(100%, #234aee));
+  /* Chrome, Safari4+ */
+  background: -webkit-linear-gradient(to bottom, #e9e9e9 50%, #234aee 100%);
+  /* Chrome10+, Safari5.1+ */
+  background: -moz-linear-gradient(to bottom, #e9e9e9 50%, #234aee 100%);
+  /* FF3.6+ */
+  background: linear-gradient(to bottom, #e9e9e9 50%, #234aee 100%);
+  /* W3C */
+  background-attachment: fixed; }
+
+h3 {
+  font-family: "Biryani", sans-serif;
+  font-weight: 800;
+  color: #333333;
+  font-size: 10vw;
+  line-height: 12vw;
+  margin-top: 1vw;
+  margin-bottom: 1vw; }
+  @media (min-width: 600px) {
+    h3 {
+      font-size: 6vw;
+      line-height: 8vw; } }
+  @media (min-width: 900px) {
+    h3 {
+      font-size: 5vw;
+      line-height: 6vw; } }
+
 h1 {
-  color: #b8232a; }
+  font-family: "Biryani", sans-serif;
+  font-weight: 800;
+  color: #333333;
+  font-size: 10vw;
+  line-height: 12vw;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+  display: inline;
+  margin: 0 20px 0 20px; }
+  @media (min-width: 600px) {
+    h1 {
+      font-size: 6vw;
+      line-height: 8vw; } }
+  @media (min-width: 900px) {
+    h1 {
+      font-size: 5vw;
+      line-height: 6vw; } }
+
+.container {
+  width: 100vw;
+  padding: 40px;
+  display: flex;
+  flex-flow: column nowrap; }
+  @media (min-width: 900px) {
+    .container {
+      flex-flow: row wrap;
+      padding: 200px 100px 100px 100px; } }
+
+.right {
+  width: 100%;
+  height: auto;
+  text-align: center;
+  order: 1; }
+  @media (min-width: 900px) {
+    .right {
+      width: 25%;
+      margin: auto; } }
+
+.left {
+  width: 100%;
+  height: auto;
+  text-align: center;
+  order: 1;
+  margin-top: 20px; }
+  @media (min-width: 900px) {
+    .left {
+      width: 75%;
+      text-align: right; } }
+
+.full {
+  width: 75%;
+  margin: 40px auto auto auto;
+  order: 2;
+  text-align: center; }
+  @media (min-width: 900px) {
+    .full {
+      width: 100%;
+      margin: 60px auto auto auto; } }
+
+.title {
+  margin: 20px;
+  position: fixed; }
+
+.suggestion {
+  margin-top: 40px; }
+
+#resultCarousel {
+  text-align: center;
+  width: 75%; }
+
+.suggestion {
+  display: none;
+  width: 100%; }
+
+.giphy {
+  max-width: 350px; }
+
+#optionSubmit {
+  width: 100%;
+  border: 2px solid #333333;
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  color: #333333;
+  background-color: #eeeeee;
+  font-size: 6vw;
+  line-height: 8vw; }
+  @media (min-width: 600px) {
+    #optionSubmit {
+      font-size: 4vw;
+      line-height: 5vw; } }
+  @media (min-width: 900px) {
+    #optionSubmit {
+      font-size: 3vw;
+      line-height: 4vw; } }
+  @media (min-width: 900px) {
+    #optionSubmit {
+      width: 75%; } }
+
+#pageSubmit {
+  border: 2px solid #333333;
+  text-align: center;
+  margin: 0 0 0 20px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  color: #333333;
+  background-color: #eeeeee;
+  font-size: 6vw;
+  line-height: 8vw; }
+  @media (min-width: 600px) {
+    #pageSubmit {
+      font-size: 4vw;
+      line-height: 5vw; } }
+  @media (min-width: 900px) {
+    #pageSubmit {
+      font-size: 3vw;
+      line-height: 4vw; } }
+
+.dropdown {
+  width: 75%;
+  border: 0;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  color: #eeeeee;
+  background-color: #333333;
+  font-size: 6vw;
+  line-height: 8vw; }
+  @media (min-width: 600px) {
+    .dropdown {
+      font-size: 4vw;
+      line-height: 5vw; } }
+  @media (min-width: 900px) {
+    .dropdown {
+      font-size: 3vw;
+      line-height: 4vw; } }
+
+option {
+  text-align: center; }
+
+.dropdown2 {
+  border: 0;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  color: #eeeeee;
+  background-color: #333333;
+  font-size: 6vw;
+  line-height: 8vw; }
+  @media (min-width: 600px) {
+    .dropdown2 {
+      font-size: 4vw;
+      line-height: 5vw; } }
+  @media (min-width: 900px) {
+    .dropdown2 {
+      font-size: 3vw;
+      line-height: 4vw; } }
 
 /*# sourceMappingURL=style.css.map */

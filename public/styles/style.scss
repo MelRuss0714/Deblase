@@ -1,5 +1,212 @@
-$maincolor: #b8232a;
+// variables
+// fonts
+$font-main: 'Open Sans', sans-serif;
+$font-accent: 'Biryani', sans-serif;
+
+// colors
+$color-dark: #333333;
+$color-light: #eeeeee;
+$color-accent: #aaaaaa;
+$color-grad-dark: #234aee;
+$color-grad-light: #e9e9e9;
+
+// responsive mixins
+@mixin for-phone-only {
+  @media (max-width: 599px) {  @content;  } 
+}
+
+@mixin for-tablet-portrait-up {
+  @media (min-width: 600px) { @content; } 
+}
+
+@mixin for-tablet-landscape-up {
+  @media (min-width: 900px) { @content; } 
+}
+
+@mixin for-desktop-up {
+  @media (min-width: 1200px) {  @content; } 
+}
+
+@mixin for-big-desktop-up {
+  @media (min-width: 1800px) {  @content;  } 
+}
+
+@mixin full-width-div {
+  width: 100%;
+  height: auto;
+  text-align: center;
+  order:1;
+  @content;
+}
+
+@mixin title-style ($color) {
+  font-family: $font-accent;
+  font-weight: 800;
+  color: $color;
+  font-size: 10vw;
+  line-height: 12vw ;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+  @include for-tablet-portrait-up() {
+    font-size: 6vw;
+    line-height: 8vw;
+  }
+  
+  @include for-tablet-landscape-up() {
+    font-size: 5vw;
+    line-height: 6vw;
+  }
+  @content;
+}
+
+@mixin large-text-style ($color, $color2) {
+  font-family: $font-main;
+  font-weight: 600;
+  color: $color;
+  background-color: $color2;
+  font-size: 6vw;
+  line-height: 8vw ;
+
+  @include for-tablet-portrait-up() {
+    font-size: 4vw;
+    line-height: 5vw;
+  }
+  
+  @include for-tablet-landscape-up() {
+    font-size: 3vw;
+    line-height: 4vw;
+  }
+}
+
+* {
+  font-family: $font-main;
+  box-sizing: border-box;
+}
+
+body, html {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  // background-color: $color-light;
+  overflow-x: hidden;
+}
+
+body{
+  background: -webkit-gradient(linear, left bottom, right bottom, color-stop(50%,$color-grad-light), color-stop(100%,$color-grad-dark)); /* Chrome, Safari4+ */
+  background: -webkit-linear-gradient(to bottom, $color-grad-light 50%, $color-grad-dark 100%); /* Chrome10+, Safari5.1+ */
+  background: -moz-linear-gradient(to bottom, $color-grad-light 50%, $color-grad-dark 100%);    /* FF3.6+ */
+  background: linear-gradient(to bottom, $color-grad-light 50%, $color-grad-dark 100%);      /* W3C */
+  background-attachment: fixed;
+}
+
+h3 {
+  @include title-style($color-dark);
+}
 
 h1 {
-    color: $maincolor;
+  @include title-style($color-dark){
+    display: inline;
+    margin: 0 20px 0 20px;
+  }
+}
+
+.container{
+  width: 100vw;
+  padding: 40px;
+  display: flex;
+  flex-flow: column nowrap;
+
+  @include for-tablet-landscape-up() {
+    flex-flow: row wrap;
+    padding: 200px 100px 100px 100px;
+  }
+}
+
+.right{
+  @include full-width-div();
+  @include for-tablet-landscape-up() {
+    width: 25%;
+    margin: auto;
+  }
+}
+
+.left{
+  @include full-width-div() {
+    margin-top: 20px;
+  }
+  
+  @include for-tablet-landscape-up() {
+    width: 75%;
+    text-align: right;
+  }
+}
+
+.full {
+  width: 75%;
+  margin: 40px auto auto auto;
+  order: 2;
+  text-align: center;
+
+  @include for-tablet-landscape-up() {
+    width: 100%;
+    margin: 60px auto auto auto ;
+  }
+}
+
+.title {
+  margin: 20px;
+  position: fixed;
+}
+
+.suggestion {
+  margin-top: 40px;
+}
+
+#resultCarousel {
+  text-align:center;
+  width: 75%;
+}
+
+.suggestion {
+  display: none;
+  width: 100%;
+}
+
+.giphy {
+  max-width: 350px;
+}
+
+#optionSubmit {
+  width: 100%;
+  border: 2px solid $color-dark;
+  text-align: center;
+  @include large-text-style($color-dark, $color-light);
+
+  @include for-tablet-landscape-up() {
+    width: 75%;
+  }
+}
+
+#pageSubmit {
+  border: 2px solid $color-dark;
+  text-align: center;
+  margin: 0 0 0 20px;
+  @include large-text-style($color-dark, $color-light)
+}
+
+.dropdown{
+  width: 75%;
+  border: 0;
+  @include large-text-style($color-light, $color-dark)
+}
+option {
+  text-align: center;
+}
+
+.dropdown2{
+  border: 0;
+  @include large-text-style($color-light, $color-dark);
 }
