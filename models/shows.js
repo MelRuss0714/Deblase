@@ -29,7 +29,7 @@ module.exports = function(sequelize, DataTypes) {
         validate: {
           len: [1, 140]
         }
-      }
+      },
       link: {
         type: DataTypes.STRING,
         // AllowNull is a flag that restricts a Shows from being entered if it doesn't
