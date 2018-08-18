@@ -1,18 +1,18 @@
 <div class="title">
   <form>
     <h1>/</h1>
-    <select id="mood" class="dropdown2">
+    <select id="option" class="dropdown2">
       <option value="stream">Stream</option>
       <option value="eat">Eat</option>
-      <option value="music">Listen</option>
+      <option value="listen">Listen</option>
       <option value="nothing">Nothing</option>
     </select>
     <h1>/</h1>
-    <select id="option" class="dropdown2">
-      <option value="happy">Dreamy</option>
-      <option value="afraid">Happy</option>
+    <select id="mood" class="dropdown2">
+      <option value="dreamy">Dreamy</option>
+      <option value="happy">Happy</option>
       <option value="angry">Angry</option>
-      <option value="disgusted">Sad</option>
+      <option value="sad">Sad</option>
       <option value="stressed">Stressed</option>
       <option value="weird">Weird</option>
       <option value="bored">Bored</option>
@@ -26,11 +26,14 @@
 
 <div class="container">
 
-  <div class="results" id="resultsCarousel">
+  <div>
     {{#each this}}
+    <img src={{{imageURL}}}>
+ {{imageURL}}
     <div>
       <h4>{{showName}}</h4>
-      <img src="{{image URL}}">
+      
+     
       <a href="{{link}}">Watch on {{service}}</a>
     </div>
     {{/each}}
@@ -40,7 +43,7 @@
 
   <div class="suggestion">
       <form>
-        <input data-option="stream" type="search" placeholder="suggest a tv show" class="suggestInput"></input>
+        <input data-option="stream" type="search" placeholder="suggest a tv show" id="suggestInput"></input>
         <button type="submit" id="suggestSubmit">Submit</button>
       </form>
   </div>

@@ -28,16 +28,18 @@ $(function () {
       mood: selectedMood
     }
 
-    $.ajax("/api/" + selectedOption + "/" + selectedMood, {
-      type: "PUT",
-      data: newData
-    }).then(
-      function () {
-        console.log(newData);
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
+    window.location.href = "/api/" + selectedOption + "/" + selectedMood;
+    
+    // $.ajax("/api/" + selectedOption + "/" + selectedMood, {
+    //   type: "GET",
+    //   data: newData
+    // }).then(
+    //   function () {
+    //     console.log(newData);
+    //     // Reload the page to get the updated list
+    //     location.reload();
+    //   }
+    // );
   });
 
   $("#pageSubmit").on("click", function () {
@@ -65,11 +67,15 @@ $(function () {
     event.preventDefault();
 
     var userSuggestion = $("#suggestInput").val().trim();
+    selectedOption = $("#option").val();
+    selectedMood = $("#mood").val();
+
+    // window.location.href = "/suggestion/" + selectedOption + "/" + selectedMood + "/" + userSuggestion;
 
     var newData = {
       suggestion: userSuggestion
     }
-    $.ajax("/suggestion/" + selectedOption + "/" + selctedMood, {
+    $.ajax("/suggestion/" + selectedOption + "/" + selectedMood, {
       type: "POST",
       data: newData
     }).then(
