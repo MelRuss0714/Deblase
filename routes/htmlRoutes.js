@@ -80,8 +80,7 @@ module.exports = function (app) {
           break;
       }
     });
-    console.log('im in html routes');
-    console.log(res);
+
     // Render 404 page for any unmatched routes
     app.get("*", function (req, res) {
       res.render("404");
