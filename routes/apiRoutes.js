@@ -22,7 +22,7 @@ module.exports = function (app) {
       switch (req.params.option) {
         case "listen":
           var songURL, image;
-          request('http://ws.audioscrobbler.com/2.0/?method=track.search&track=' + req.body.data.suggestion + '&artist=' + req.body.artist + '&api_key=57ee3318536b23ee81d6b27e36997cde&format=json', { json: true }, (err, res, body) => {
+          request('http://ws.audioscrobbler.com/2.0/?method=track.search&track=' + req.body.suggestion + '&artist=' + req.body.artist + '&api_key=57ee3318536b23ee81d6b27e36997cde&format=json', { json: true }, (err, res, body) => {
             if (err) { return console.log(err); }
             var response = res.body;
 
@@ -31,25 +31,25 @@ module.exports = function (app) {
 
             //Logging responses we return to insert into mySQL DB
             console.log("url: " + songURL + "Image: " + image);
-
+            db.Songs.update({
+              songName: req.body.suggestion,
+              artist: req.body.artist,
+              url: songURL,
+              image: image
+            }, {
+                where: {
+                  moodId: moodId
+                }
+              }).then(function (dbSongs) {
+                res.json(dbSongs);
+              })
+              .catch(function (err) {
+                // Whenever a validation or flag fails, an error is thrown
+                // We can "catch" the error to prevent it from being "thrown", which could crash our node app
+                res.json(err);
+              });
           });
-          db.Songs.update({
-            songName: req.body.songName,
-            artist: req.body.artist,
-            url: songURL,
-            image: image
-          }, {
-              where: {
-                moodId: moodId
-              }
-            }).then(function (dbSongs) {
-              res.json(dbSongs);
-            })
-            .catch(function (err) {
-              // Whenever a validation or flag fails, an error is thrown
-              // We can "catch" the error to prevent it from being "thrown", which could crash our node app
-              res.json(err);
-            });
+          
           break;
         case "stream":
           var service, showURL, image;
@@ -83,7 +83,7 @@ module.exports = function (app) {
           break;
         case "eat":
           var recipeURL, image;
-          unirest.get("https://api.edamam.com/search?q=" + req.body.recipeName + "&app_id=3e1489a2&app_key=97f8278ee92eb615fc479b170a1c5171&from=0&to=1")
+          unirest.get("https://api.edamam.com/search?q=" + req.body.suggestion + "&app_id=3e1489a2&app_key=97f8278ee92eb615fc479b170a1c5171&from=0&to=1")
             .header("Accept-Encoding", "gzip")
             .header("Content-Encoding", "gzip")
             .end(function (result) {
@@ -93,50 +93,24 @@ module.exports = function (app) {
               recipeURL = JSON.stringify(result.body.hits[0].recipe.url);
 
               console.log(" this is recipe: " + url)//  + image + label);
-
+              db.Recipes.update({
+                recipeName: req.body.suggestion,
+                url: recipeURL,
+                image: image
+              }, {
+                  where: {
+                    moodId: moodId
+                  }
+                }).then(function (dbRecipes) {
+                  res.json(dbRecipes);
+                })
+                .catch(function (err) {
+                  // Whenever a validation or flag fails, an error is thrown
+                  // We can "catch" the error to prevent it from being "thrown", which could crash our node app
+                  res.json(err);
+                });
             });
-          db.Recipes.update({
-            recipeName: req.body.recipeName,
-            url: recipeURL,
-            image: image
-          }, {
-              where: {
-                moodId: moodId
-              }
-            }).then(function (dbRecipes) {
-              res.json(dbRecipes);
-            })
-            .catch(function (err) {
-              // Whenever a validation or flag fails, an error is thrown
-              // We can "catch" the error to prevent it from being "thrown", which could crash our node app
-              res.json(err);
-            });
-          break;
-        case "nothing":
-          var giphyURL;
-          request('https://api.giphy.com/v1/gifs/search?q=' + req.params.mood + '&limit=10&offset=0&rating=R&api_key=qCHU3WJfRnuaeWrO8zjwX5qq3CVgRF3x', { json: true }, (err, res, body) => {
-            if (err) { return console.log(err); }
-            var response = res.body;
-
-            giphyURL = JSON.stringify(response.data[0].url);
-            //Logging responses we return to insert into mySQL DB
-            console.log("url: " + giphyURL);
-
-          });
-          db.Giphs.update({
-            url: giphyURL
-          }, {
-              where: {
-                moodId: moodId
-              }
-            }).then(function (dbGiphs) {
-              res.json(dbGiphs);
-            })
-            .catch(function (err) {
-              // Whenever a validation or flag fails, an error is thrown
-              // We can "catch" the error to prevent it from being "thrown", which could crash our node app
-              res.json(err);
-            });
+          
           break;
       };
       // Render 404 page for any unmatched routes
