@@ -10,16 +10,14 @@ body, html {
 body {
   overflow-x: hidden; }
 
-body {
-  background: -webkit-gradient(linear, left bottom, right bottom, color-stop(50%, #e9e9e9), color-stop(100%, #234aee));
-  /* Chrome, Safari4+ */
-  background: -webkit-linear-gradient(to bottom, #e9e9e9 50%, #234aee 100%);
-  /* Chrome10+, Safari5.1+ */
-  background: -moz-linear-gradient(to bottom, #e9e9e9 50%, #234aee 100%);
-  /* FF3.6+ */
-  background: linear-gradient(to bottom, #e9e9e9 50%, #234aee 100%);
-  /* W3C */
-  background-attachment: fixed; }
+.svgClass {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  z-index: -1; }
 
 h3 {
   font-family: "Biryani", sans-serif;
@@ -61,7 +59,9 @@ h1 {
   width: 100vw;
   padding: 40px;
   display: flex;
-  flex-flow: column nowrap; }
+  flex-flow: column nowrap;
+  background-clip: content-box;
+  background-color: #eeeeee; }
   @media (min-width: 900px) {
     .container {
       flex-flow: row wrap;
@@ -113,7 +113,7 @@ h1 {
   display: none;
   width: 100%; }
 
-.giphy {
+.giphy, .resultImg {
   max-width: 350px; }
 
 #optionSubmit {
@@ -136,7 +136,8 @@ h1 {
       line-height: 4vw; } }
   @media (min-width: 900px) {
     #optionSubmit {
-      width: 75%; } }
+      width: 75%;
+      margin-bottom: 30px; } }
 
 #pageSubmit {
   border: 2px solid #333333;
