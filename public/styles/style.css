@@ -11,7 +11,7 @@ body {
   overflow-x: hidden; }
 
 .svgClass {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   min-width: 100vw;
@@ -65,7 +65,7 @@ h1 {
   @media (min-width: 900px) {
     .container {
       flex-flow: row wrap;
-      padding: 200px 100px 100px 100px; } }
+      padding: 150px 100px 100px 100px; } }
 
 .right {
   width: 100%;
