@@ -45,19 +45,19 @@ function pageTitle() {
   var options = remakeOptionsArray();
   var moods = remakeMoodsArray();
 
-  var dropdownOption = $("<select>").attr("id", "option").attr("class", "dropdown2");
-  var dropdownMood = $("<select>").attr("id", "mood").attr("class", "dropdown2");
+  var dropdownOption = $("<select>").attr("id", "pageOption").attr("class", "dropdown2");
+  var dropdownMood = $("<select>").attr("id", "pageMood").attr("class", "dropdown2");
 
   for (i = 0; i < options.length; i++) {
-    var optionDD = $("<option>").attr("value",options[i]).text(capitalizeFirstLetter(options[i]));
+    var optionDD = $("<option>").attr("value", options[i]).text(capitalizeFirstLetter(options[i]));
     dropdownOption.append(optionDD);
   }
   for (i = 0; i < moods.length; i++) {
-    var moodDD = $("<option>").attr("value",moods[i]).text(capitalizeFirstLetter(moods[i]));
+    var moodDD = $("<option>").attr("value", moods[i]).text(capitalizeFirstLetter(moods[i]));
     dropdownMood.append(moodDD);
   }
 
-  var submitButton = $("<button>").addClass("submit").attr("type","submit").attr("id","pageSubmit").text("Submit");
+  var submitButton = $("<button>").addClass("submit").attr("type", "submit").attr("id", "pageSubmit").text("Submit");
 
   var title = $("<form>").append(slash).append(dropdownOption).append(slash).append(dropdownMood).append(submitButton);
   $(".title").append(title);
@@ -79,25 +79,25 @@ $(function () {
   // jqSvg
   // console.log(jqSvg);
   // 	// Get the Object by ID
-	// var a = document.getElementById("svgId");
-	// // Get the SVG document inside the Object tag
-	// var svgDoc = a.contentDocument;
-	// // Get one of the SVG items by ID;
-	// var svgItem = svgDoc.getElementsByClassName("st0");
-	// // Set the colour to something else
-	// svgItem.setAttribute("fill", "lime");
+  // var a = document.getElementById("svgId");
+  // // Get the SVG document inside the Object tag
+  // var svgDoc = a.contentDocument;
+  // // Get one of the SVG items by ID;
+  // var svgItem = svgDoc.getElementsByClassName("st0");
+  // // Set the colour to something else
+  // svgItem.setAttribute("fill", "lime");
 
-  
+
 
   // $(".container").attr("style","background-color:red;")
   // //console.log(container)
-      
-  $(".svgClass").on("load", function() {
-    document.querySelector(".svgClass").getSVGDocument().getElementsByClassName("st0").setAttribute("fill", "red");
-    document.querySelector(".svgClass").getSVGDocument().getElementsByClassName("st1").setAttribute("fill", "#080808");
-    document.querySelector(".svgClass").getSVGDocument().getElementsByClassName("st2").setAttribute("fill", "#a1a1a1");
-    
-  });
+
+  // $(".svgClass").on("load", function() {
+  //   document.querySelector(".svgClass").getSVGDocument().getElementsByClassName("st0").setAttribute("fill", "red");
+  //   document.querySelector(".svgClass").getSVGDocument().getElementsByClassName("st1").setAttribute("fill", "#080808");
+  //   document.querySelector(".svgClass").getSVGDocument().getElementsByClassName("st2").setAttribute("fill", "#a1a1a1");
+
+  // });
 
   $(".showSuggestion").on("click", function () {
     $(".suggestion").attr("style", "display:inline;")
@@ -111,8 +111,8 @@ $(function () {
   });
 
   $("#pageSubmit").on("click", function () {
-    selectedOption = $("#option").val();
-    selectedMood = $("#mood").val();
+    selectedOption = $("#pageOption").val();
+    selectedMood = $("#pageMood").val();
 
     window.location.href = "/api/" + selectedOption + "/" + selectedMood;
   });
@@ -120,25 +120,44 @@ $(function () {
   $("#suggestSubmit").on("click", function () {
     event.preventDefault();
 
-    var userSuggestion = $("#suggestInput").val().trim();
-    selectedOption = $("#option").val();
-    selectedMood = $("#mood").val();
+    if ($("#suggestInputArtist")) {
 
-    // window.location.href = "/suggestion/" + selectedOption + "/" + selectedMood + "/" + userSuggestion;
+      var userSuggestionArtist = $(".suggestInput").filter("#suggestInputArtist").val().trim();
+      var userSuggestionSong = $(".suggestInput").filter("#suggestInputSong").val().trim();
 
-    var newData = {
-      suggestion: userSuggestion
-    }
-    $.ajax("/suggestion/" + selectedOption + "/" + selectedMood, {
-      type: "POST",
-      data: newData
-    }).then(
-      function () {
-        console.log("suggestion: " + userSuggestion + " added to the database.")
-        location.reload();
+      var newData = {
+        artist: userSuggestionArtist,
+        song: userSuggestionSong
       }
-    );
+      $.ajax("/suggestion/" + selectedOption + "/" + selectedMood, {
+        type: "POST",
+        data: newData
+      }).then(
+        function () {
+          console.log("suggestion: " + newData + " added to the database.")
+          location.reload();
+        }
+      );
 
-    $("#suggestInput").val(" ")
+    } else {
+
+      var userSuggestion = $(".suggestInput").val().trim();
+
+      var newData = {
+        suggestion: userSuggestion
+      }
+      $.ajax("/suggestion/" + selectedOption + "/" + selectedMood, {
+        type: "POST",
+        data: newData
+      }).then(
+        function () {
+          console.log("suggestion: " + userSuggestion + " added to the database.")
+          location.reload();
+        }
+      );
+
+    }
+
+
   });
 });
