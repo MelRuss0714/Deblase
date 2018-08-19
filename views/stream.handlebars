@@ -1,51 +1,26 @@
-<div class="title">
-  <form>
-    <h1>/</h1>
-    <select id="option" class="dropdown2">
-      <option value="stream">Stream</option>
-      <option value="eat">Eat</option>
-      <option value="listen">Listen</option>
-      <option value="nothing">Nothing</option>
-    </select>
-    <h1>/</h1>
-    <select id="mood" class="dropdown2">
-      <option value="dreamy">Dreamy</option>
-      <option value="happy">Happy</option>
-      <option value="angry">Angry</option>
-      <option value="sad">Sad</option>
-      <option value="stressed">Stressed</option>
-      <option value="weird">Weird</option>
-      <option value="bored">Bored</option>
-    </select>
-    <button type="submit" class="submit" id="pageSubmit">
-      Submit
-    </button>
-  </form>
-
-</div>
+<object id="svgId" class="svgClass" type="image/svg+xml" data="/images/background2.svg"></object>
+<div class="title"></div>
 
 <div class="container">
 
   <div>
     {{#each this}}
-    <img src={{{imageURL}}}>
- {{imageURL}}
     <div>
       <h4>{{showName}}</h4>
-      
-     
+      <img src={{{imageURL}}} class="resultImg">
       <a href="{{link}}">Watch on {{service}}</a>
     </div>
     {{/each}}
   </div>
 
+  
   <a href="#" class="showSuggestion">ADD A SUGGESTION</a>
 
   <div class="suggestion">
-      <form>
-        <input data-option="stream" type="search" placeholder="suggest a tv show" id="suggestInput"></input>
-        <button type="submit" id="suggestSubmit">Submit</button>
-      </form>
+    <form>
+      <input data-option="stream" type="search" placeholder="suggest a tv show" id="suggestInput"></input>
+      <button type="submit" id="suggestSubmit">Submit</button>
+    </form>
   </div>
 
 </div>

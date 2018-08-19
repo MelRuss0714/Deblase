@@ -1,34 +1,12 @@
-<div class="title">
-  <form>
-    <h1>/</h1>
-    <select id="mood" class="dropdown2">
-      <option value="stream">Stream</option>
-      <option value="eat">Eat</option>
-      <option value="music">Listen</option>
-      <option value="nothing">Nothing</option>
-    </select>
-    <h1>/</h1>
-    <select id="option" class="dropdown2">
-      <option value="happy">Dreamy</option>
-      <option value="afraid">Happy</option>
-      <option value="angry">Angry</option>
-      <option value="disgusted">Sad</option>
-      <option value="stressed">Stressed</option>
-      <option value="weird">Weird</option>
-      <option value="bored">Bored</option>
-    </select>
-    <button type="submit" class="submit" id="pageSubmit">
-      Submit
-    </button>
-  </form>
+<object id="svgId" class="svgClass" type="image/svg+xml" data="/images/background2.svg"></object>
+<div class="title"></div>
 
-</div>
 
 <div class="container">
 
   <div class="results">
     {{#each this}}
-      <img src="{{image URL}}" class="giphy"> 
+      <img src="{{imageURL}}" class="giphy"> 
     {{/each}}
   </div>
 
