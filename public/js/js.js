@@ -57,7 +57,7 @@ function pageTitle() {
     dropdownMood.append(moodDD);
   }
 
-  var submitButton = $("<button>").addClass("submit").attr("type", "submit").attr("id", "pageSubmit").text("Submit");
+  var submitButton = $("<button>").addClass("submit").attr("type", "reset").attr("id", "pageSubmit").text("Submit");
 
   var title = $("<form>").append(slash).append(dropdownOption).append(slash).append(dropdownMood).append(submitButton);
   $(".title").append(title);
@@ -69,35 +69,6 @@ $(function () {
   if (pathString.length === 4) {
     pageTitle();
   }
-  // if ($("#svg")) {
-  //   $(".st0").attr("fill","yellow");
-  // // }
-  // var svgDoc = document.getElementById("svgId").contentDocument.getElementsByClassName("st0");
-  // var svgObject = document.getElementById("svgId").contentDocument;
-  // var svg = svgObject.getElementsByClassName("st0"); // .getElementById("Layer_3") getElementsByClassName("st1");
-  // var jqSvg = svg.setAttribute("fill","red")
-  // jqSvg
-  // console.log(jqSvg);
-  // 	// Get the Object by ID
-  // var a = document.getElementById("svgId");
-  // // Get the SVG document inside the Object tag
-  // var svgDoc = a.contentDocument;
-  // // Get one of the SVG items by ID;
-  // var svgItem = svgDoc.getElementsByClassName("st0");
-  // // Set the colour to something else
-  // svgItem.setAttribute("fill", "lime");
-
-
-
-  // $(".container").attr("style","background-color:red;")
-  // //console.log(container)
-
-  // $(".svgClass").on("load", function() {
-  //   document.querySelector(".svgClass").getSVGDocument().getElementsByClassName("st0").setAttribute("fill", "red");
-  //   document.querySelector(".svgClass").getSVGDocument().getElementsByClassName("st1").setAttribute("fill", "#080808");
-  //   document.querySelector(".svgClass").getSVGDocument().getElementsByClassName("st2").setAttribute("fill", "#a1a1a1");
-
-  // });
 
   $(".showSuggestion").on("click", function () {
     $(".suggestion").attr("style", "display:inline;")
@@ -113,14 +84,14 @@ $(function () {
   $("#pageSubmit").on("click", function () {
     selectedOption = $("#pageOption").val();
     selectedMood = $("#pageMood").val();
-
+  
     window.location.href = "/api/" + selectedOption + "/" + selectedMood;
   });
 
   $("#suggestSubmit").on("click", function () {
     event.preventDefault();
 
-    if ($("#suggestInputArtist")) {
+    if (pathString[2] === "listen") {
 
       var userSuggestionArtist = $(".suggestInput").filter("#suggestInputArtist").val().trim();
       var userSuggestionSong = $(".suggestInput").filter("#suggestInputSong").val().trim();
