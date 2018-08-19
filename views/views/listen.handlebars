@@ -1,0 +1,27 @@
+<object id="svgId" class="svgClass" type="image/svg+xml" data="/images/background2.svg"></object>
+<div class="title"></div>
+
+<div class="container">
+
+  <div class="results">
+    {{#each this}}
+      <div class="singleResult">
+        <h4>{{songName}}</h4>
+        <p>{{artist}}</p>
+        <a href="{{url}}">Last FM link</a>
+        <img src="{{artistImage}}">
+      </div>
+    {{/each}}
+  </div>
+
+  <a href="#" class="showSuggestion">ADD A SUGGESTION</a>
+
+  <div class="suggestion">
+    <form>
+      <input data-option="listen-artist" type="search" placeholder="Artist" class="suggestInput"></input>
+      <input data-option="listen-song" type="search" placeholder="Song" class="suggestInput"></input>
+      <button type="submit" id="suggestSubmit">Submit</button>
+    </form>
+  </div>
+
+</div>
