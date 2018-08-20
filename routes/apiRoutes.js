@@ -19,19 +19,22 @@ module.exports = function (app) {
       console.log("Body.option is as follows: " + req.params.option);
 
       moodId = moodResult.id;
+
       switch (req.params.option) {
+
         case "listen":
           var songURL, image;
-          request('http://ws.audioscrobbler.com/2.0/?method=track.search&track=' + req.body.suggestion + '&artist=' + req.body.artist + '&api_key=57ee3318536b23ee81d6b27e36997cde&format=json', { json: true }, (err, res, body) => {
-            if (err) { return console.log(err); }
+          request('http://ws.audioscrobbler.com/2.0/?method=track.search&track=' + req.data.song + '&artist=' + req.data.artist + '&api_key=57ee3318536b23ee81d6b27e36997cde&format=json', { json: true }, (err, res, body) => {
+
             var response = res.body;
 
             songURL = JSON.stringify(response.results.trackmatches.track[0].url);
             image = JSON.stringify(response.results.trackmatches.track[0].image[4].text);
-
+            console.log("url: " + songURL);
+            console.log(req.data.suggestion);
             //Logging responses we return to insert into mySQL DB
             console.log("url: " + songURL + "Image: " + image);
-            db.Songs.update({
+            db.Songs.create({
               songName: req.body.suggestion,
               artist: req.body.artist,
               url: songURL,
@@ -48,8 +51,9 @@ module.exports = function (app) {
                 // We can "catch" the error to prevent it from being "thrown", which could crash our node app
                 res.json(err);
               });
+
           });
-          
+
           break;
         case "stream":
           var service, showURL, image;
@@ -57,11 +61,14 @@ module.exports = function (app) {
             .header("X-Mashape-Key", "fYk8PFc8Eumsh9DDi5Z1Np9cafM2p1HflPwjsndzj8fU4KVIgn")
             .header("X-Mashape-Host", "utelly-tv-shows-and-movies-availability-v1.p.mashape.com")
             .end(function (result) {
-              console.log(JSON.stringify(result));
+              console.log(result.body.results)
+
               service = JSON.stringify(result.body.results[0].locations[0].display_name);
               showURL = JSON.stringify(result.body.results[0].locations[0].url);
               image = JSON.stringify(result.body.results[0].picture);
-              db.Shows.update({
+              console.log(req.body.suggestion)
+              console.log("service: " + service + "showURL: " + showURL + "image: " + image);
+              db.Shows.create({
                 showName: req.body.suggestion,
                 service: service,
                 link: showURL,
@@ -92,8 +99,8 @@ module.exports = function (app) {
               image = JSON.stringify(result.body.hits[0].recipe.image);
               recipeURL = JSON.stringify(result.body.hits[0].recipe.url);
 
-              console.log(" this is recipe: " + url)//  + image + label);
-              db.Recipes.update({
+              console.log(" this is recipe: " + recipeURL)//  + image + label);
+              db.Recipes.create({
                 recipeName: req.body.suggestion,
                 url: recipeURL,
                 image: image
@@ -110,7 +117,7 @@ module.exports = function (app) {
                   res.json(err);
                 });
             });
-          
+
           break;
       };
       // Render 404 page for any unmatched routes
