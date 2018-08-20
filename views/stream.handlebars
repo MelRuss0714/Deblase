@@ -1,26 +1,22 @@
-<object id="svgId" class="svgClass" type="image/svg+xml" data="/images/background2.svg"></object>
 <div class="title"></div>
 
 <div class="container">
-
-  <div>
-    {{#each this}}
-    <div>
-      <h4>{{showName}}</h4>
-      <img  class="resultImg" src={{{imageURL}}}>
-      <a href="{{link}}">Watch on {{service}}</a>
-    </div>
-    {{/each}}
+  {{#each this}}
+  <div class="result">
+    <h4 class="resultTitle">{{showName}}</h4>
+    <img class="resultImg" src={{{imageURL}}}>
+    <a class="resultLink" href="{{{link}}}">Watch on {{service}}</a>
   </div>
-
-  
-  <a href="#" class="showSuggestion">ADD A SUGGESTION</a>
+  {{/each}}
 
   <div class="suggestion">
-    <form>
-      <input data-option="stream" type="search" placeholder="suggest a tv show" id="suggestInput"></input>
-      <button type="submit" id="suggestSubmit">Submit</button>
-    </form>
-  </div>
+    <a class="showSuggestion">Suggest something to watch</a>
 
+    <div id="suggestion">
+      <form>
+        <input data-option="stream" type="search" placeholder="suggestion" id="suggestInput"></input>
+        <button type="submit" id="suggestSubmit">Submit</button>
+      </form>
+    </div>
+  </div>
 </div>

@@ -1,23 +1,20 @@
-<object id="svgId" class="svgClass" type="image/svg+xml" data="/images/background2.svg"></object>
 <div class="title"></div>
 
 <div class="container">
-
-  <div class="results">
-    {{#each this}}
-      <p><a href="{{link}}"><h4>{{recipeName}}</h4></a></p>
-      <img src="{{image}}">
-    {{/each}}
+  {{#each this}}
+  <div class="results resEat">
+      <a class="resultLink" href="{{{link}}}"><h4>{{recipeName}}</h4></a>
   </div>
-
-  <a href="#" class="showSuggestion">ADD A SUGGESTION</a>
+  {{/each}}
 
   <div class="suggestion">
+    <a class="showSuggestion">Suggest a recipe</a>
+
+    <div id="suggestion">
       <form>
-        <input data-option="eat" type="search" placeholder="suggest a dish" class="suggestInput"></input>
-        <button type="submit">Submit</button>
+        <input data-option="eat" type="search" placeholder="suggestion" class="suggestInput"></input>
+        <button type="submit" id="suggestSubmit">Submit</button>
       </form>
+    </div>
   </div>
-
-
 </div>

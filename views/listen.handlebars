@@ -1,27 +1,27 @@
-<object id="svgId" class="svgClass" type="image/svg+xml" data="/images/background2.svg"></object>
 <div class="title"></div>
 
 <div class="container">
 
-  <div class="results" id="resultsCarousel">
+  
     {{#each this}}
-      <div>
-        <h4>{{songName}}</h4>
-        <p>{{artist}}</p>
-        <a href="{{url}}">Last FM link</a>
-        <img src="{{artistImage}}">
-      </div>
+    <div class="result">
+      <h4 class="resultTitle">{{songName}}</h4>
+      <p class="resultP">{{artist}}</p>
+      <img src="{{{artistImage}}}">
+      <a class="resultLink" href="{{{url}}}">Listen on Last.fm</a>
+    </div>
     {{/each}}
-  </div>
-
-  <a href="#" class="showSuggestion">ADD A SUGGESTION</a>
-
+  
   <div class="suggestion">
-    <form>
-      <input data-option="listen" type="search" placeholder="Artist" class="suggestInput" id="suggestInputArtist"></input>
-      <input data-option="listen" type="search" placeholder="Song" class="suggestInput" id="suggestInputSong"></input>
-      <button type="submit">Submit</button>
-    </form>
+    <a class="showSuggestion">Suggest a song</a>
+
+    <div id="suggestion">
+      <form>
+        <input data-option="listen" type="search" placeholder="Artist" class="suggestInput" id="suggestInputArtist"></input>
+        <input data-option="listen" type="search" placeholder="Song" class="suggestInput" id="suggestInputSong"></input>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   </div>
 
 </div>
