@@ -1,6 +1,13 @@
 * {
   font-family: "Open Sans", sans-serif;
+  font-size: 20px;
   box-sizing: border-box; }
+  @media (min-width: 900px) {
+    * {
+      font-size: 24px; } }
+
+a {
+  color: #333333; }
 
 body, html {
   padding: 0;
@@ -8,16 +15,11 @@ body, html {
   height: 100%; }
 
 body {
-  overflow-x: hidden; }
-
-.svgClass {
-  position: fixed;
-  top: 0;
-  left: 0;
-  min-width: 100vw;
-  height: 100vh;
-  min-height: 100vh;
-  z-index: -1; }
+  overflow-x: hidden;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/bgindex.svg); }
 
 h3 {
   font-family: "Biryani", sans-serif;
@@ -55,17 +57,55 @@ h1 {
       font-size: 5vw;
       line-height: 6vw; } }
 
+h4 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  color: #333333;
+  background-color: none;
+  font-size: 6vw;
+  line-height: 8vw;
+  margin-bottom: 10px; }
+  @media (min-width: 600px) {
+    h4 {
+      font-size: 4vw;
+      line-height: 5vw; } }
+  @media (min-width: 900px) {
+    h4 {
+      font-size: 3vw;
+      line-height: 4vw; } }
+
+.svgClass {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  z-index: -1; }
+
 .container {
   width: 100vw;
-  padding: 40px;
   display: flex;
   flex-flow: column nowrap;
   background-clip: content-box;
-  background-color: #eeeeee; }
+  background-color: rgba(247, 247, 247, 0.85);
+  text-align: center; }
+  @media (min-width: 600px) {
+    .container {
+      padding: 40px; } }
   @media (min-width: 900px) {
     .container {
       flex-flow: row wrap;
-      padding: 150px 100px 100px 100px; } }
+      padding: 100px 100px 100px 100px; } }
+
+#indexContainer {
+  margin-top: 50px; }
+
+.titleRes {
+  display: block; }
+  @media (min-width: 900px) {
+    .titleRes {
+      display: inline; } }
 
 .right {
   width: 100%;
@@ -98,32 +138,62 @@ h1 {
       width: 100%;
       margin: 60px auto auto auto; } }
 
+.result {
+  text-align: center;
+  margin-bottom: 20px;
+  margin: auto;
+  min-width: 350px; }
+
+.resEat {
+  width: 100%; }
+
+.resultTitle {
+  display: block; }
+
+.resultImg {
+  max-width: 350px;
+  display: block;
+  margin: auto; }
+
+.giphy {
+  margin-bottom: 10px; }
+  @media (min-width: 600px) {
+    .giphy {
+      display: inline;
+      margin-right: 10px;
+      margin-left: 10px; } }
+
+.resultLink {
+  display: block; }
+
 .title {
-  margin: 20px;
-  position: fixed; }
+  margin: 0 0 20px 0; }
 
 .suggestion {
-  margin-top: 40px; }
+  margin-top: 40px;
+  padding: 40px;
+  text-align: center; }
 
 #resultCarousel {
   text-align: center;
   width: 75%; }
 
 .suggestion {
-  display: none;
   width: 100%; }
 
-.giphy, .resultImg {
-  max-width: 350px; }
+#suggestion {
+  display: none;
+  width: 100%; }
 
 #optionSubmit {
   width: 100%;
   border: 2px solid #333333;
   text-align: center;
+  margin-bottom: 20px;
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
   color: #333333;
-  background-color: #eeeeee;
+  background-color: #f7f7f7;
   font-size: 6vw;
   line-height: 8vw; }
   @media (min-width: 600px) {
@@ -146,7 +216,7 @@ h1 {
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
   color: #333333;
-  background-color: #eeeeee;
+  background-color: #f7f7f7;
   font-size: 6vw;
   line-height: 8vw; }
   @media (min-width: 600px) {
@@ -158,12 +228,34 @@ h1 {
       font-size: 3vw;
       line-height: 4vw; } }
 
-.dropdown {
-  width: 75%;
-  border: 0;
+#suggestSubmit {
+  border: 2px solid #333333;
+  text-align: center;
+  width: 100%;
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
-  color: #eeeeee;
+  color: #333333;
+  background-color: #f7f7f7;
+  font-size: 6vw;
+  line-height: 8vw; }
+  @media (min-width: 600px) {
+    #suggestSubmit {
+      font-size: 4vw;
+      line-height: 5vw; } }
+  @media (min-width: 900px) {
+    #suggestSubmit {
+      font-size: 3vw;
+      line-height: 4vw; } }
+  @media (min-width: 900px) {
+    #suggestSubmit {
+      width: auto; } }
+
+.dropdown {
+  border: 2px solid #333333;
+  width: 75%;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  color: #f7f7f7;
   background-color: #333333;
   font-size: 6vw;
   line-height: 8vw; }
@@ -180,10 +272,10 @@ option {
   text-align: center; }
 
 .dropdown2 {
-  border: 0;
+  border: 2px solid #333333;
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
-  color: #eeeeee;
+  color: #f7f7f7;
   background-color: #333333;
   font-size: 6vw;
   line-height: 8vw; }
@@ -195,5 +287,26 @@ option {
     .dropdown2 {
       font-size: 3vw;
       line-height: 4vw; } }
+
+.suggestInput {
+  border: 2px solid #333333;
+  width: 100%;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  color: #f7f7f7;
+  background-color: #333333;
+  font-size: 6vw;
+  line-height: 8vw; }
+  @media (min-width: 600px) {
+    .suggestInput {
+      font-size: 4vw;
+      line-height: 5vw; } }
+  @media (min-width: 900px) {
+    .suggestInput {
+      font-size: 3vw;
+      line-height: 4vw; } }
+  @media (min-width: 900px) {
+    .suggestInput {
+      width: auto; } }
 
 /*# sourceMappingURL=style.css.map */

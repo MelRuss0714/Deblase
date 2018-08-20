@@ -5,7 +5,7 @@ $font-accent: 'Biryani', sans-serif;
 
 // colors
 $color-dark: #333333;
-$color-light: #eeeeee;
+$color-light: #f7f7f7;
 $color-accent: #aaaaaa;
 $color-grad-dark: #234aee;
 $color-grad-light: #e9e9e9;
@@ -66,7 +66,7 @@ $color-grad-light: #e9e9e9;
   background-color: $color2;
   font-size: 6vw;
   line-height: 8vw ;
-
+  @content;
   @include for-tablet-portrait-up() {
     font-size: 4vw;
     line-height: 5vw;
@@ -80,9 +80,16 @@ $color-grad-light: #e9e9e9;
 
 * {
   font-family: $font-main;
+  font-size: 20px;
   box-sizing: border-box;
+  @include for-tablet-landscape-up() {
+    font-size: 24px;
+  }
 }
 
+a {
+  color: $color-dark;
+}
 body, html {
   padding: 0;
   margin: 0;
@@ -91,22 +98,11 @@ body, html {
 
 body {
   overflow-x: hidden;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/bgindex.svg);
 }
-
-
-.svgClass {
-  position: absolute;
-  top: 0;
-  left: 0;
-  min-width: 100vw;
-  height: 100vh;
-  min-height: 100vh;
-  z-index: -1;
-}
-
-// .st0{fill:rgb(218, 218, 218);}
-// .st1{fill:#747474;}
-// .st2{fill:rgb(29, 29, 29);}
 
 h3 {
   @include title-style($color-dark);
@@ -119,17 +115,48 @@ h1 {
   }
 }
 
+h4{
+  @include large-text-style($color-dark, none){
+    margin-bottom:10px;
+  }
+}
+
+.svgClass {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  z-index: -1;
+}
+
 .container{
   width: 100vw;
-  padding: 40px;
   display: flex;
   flex-flow: column nowrap;
   background-clip: content-box;
-  background-color:$color-light;
+  background-color:rgba(247,247,247,0.85);
+  text-align: center;
+
+  @include for-tablet-portrait-up() {
+    padding: 40px;
+  }
 
   @include for-tablet-landscape-up() {
     flex-flow: row wrap;
-    padding: 200px 100px 100px 100px;
+    padding: 100px 100px 100px 100px;
+  }
+}
+
+#indexContainer {
+  margin-top: 50px;
+}
+
+.titleRes {
+  display: block;
+  @include for-tablet-landscape-up() {
+    display: inline;
   }
 }
 
@@ -164,13 +191,48 @@ h1 {
   }
 }
 
+.result {
+  text-align:center;
+  margin-bottom: 20px;
+  margin: auto;
+  min-width: 350px;
+}
+.resEat {
+ width: 100%;
+}
+
+.resultTitle {
+  display: block;
+}
+
+.resultImg {
+  max-width: 350px;
+  display: block;
+  margin:auto;
+}
+.giphy {
+  margin-bottom: 10px;
+
+  @include for-tablet-portrait-up() {
+    display: inline;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+}
+
+.resultLink {
+  display: block;
+}
+
+
 .title {
-  margin: 20px;
-  position: fixed;
+  margin: 0 0 20px 0;
 }
 
 .suggestion {
   margin-top: 40px;
+  padding: 40px;
+  text-align:center;
 }
 
 #resultCarousel {
@@ -179,18 +241,18 @@ h1 {
 }
 
 .suggestion {
-  display: none;
   width: 100%;
 }
-
-.giphy, .resultImg {
-  max-width: 350px;
+#suggestion {
+  display: none;
+  width: 100%;
 }
 
 #optionSubmit {
   width: 100%;
   border: 2px solid $color-dark;
   text-align: center;
+  margin-bottom: 20px;
   @include large-text-style($color-dark, $color-light);
 
   @include for-tablet-landscape-up() {
@@ -206,9 +268,19 @@ h1 {
   @include large-text-style($color-dark, $color-light)
 }
 
+#suggestSubmit {
+  border: 2px solid $color-dark;
+  text-align: center;
+  width: 100%;
+  @include large-text-style($color-dark, $color-light);
+  @include for-tablet-landscape-up() {
+    width: auto;
+  }
+}
+
 .dropdown{
+  border: 2px solid $color-dark;
   width: 75%;
-  border: 0;
   @include large-text-style($color-light, $color-dark)
 }
 option {
@@ -216,6 +288,15 @@ option {
 }
 
 .dropdown2{
-  border: 0;
+  border: 2px solid $color-dark;
   @include large-text-style($color-light, $color-dark);
+}
+
+.suggestInput{
+  border: 2px solid $color-dark;
+  width: 100%;
+  @include large-text-style($color-light, $color-dark);
+  @include for-tablet-landscape-up() {
+    width: auto;
+  }
 }
